@@ -3,12 +3,15 @@ import axios from "axios";
 export const baseUrl = 'https://bayut.p.rapidapi.com';
 
 export const fetchApi = async (url) => {
-  const { data } = await axios.get((url), {
+  let returnData;
+  await fetch(url, {
     headers: {
-      'x-rapidapi-host': 'bayut.p.rapidapi.com',
-      'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPID_API_KEY ,
+      'X-RapidApi-Host': 'bayut.p.rapidapi.com',
+      'X-RapidApi-Key': 'b6c5d34b4fmsh0c60df1c5f02260p1c174cjsn62b827b9a243' ,
     },
-  });
-    
-  return data;
+  }).then(resp=> resp.json()).then(data=> {returnData = data});
+  
+  console.log(returnData)
+  console.log(returnData)
+  return returnData;
 }
